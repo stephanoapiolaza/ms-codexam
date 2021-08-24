@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    ms-codexam:
+        image: ms-codexam
+        environment: 
+            - "profile=prod"
+            - "PORT=8080"
+volumes:
+    ms-codexam_data:

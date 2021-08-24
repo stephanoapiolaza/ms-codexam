@@ -1,0 +1,49 @@
+{
+  "name": "ms-codexam",
+  "version": "1.0.0",
+  "description": "Allow to make an developers assestment to knowledge theirs skills",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sonar": "sonar-scanner",
+    "cyclone": "node_modules/@cyclonedx/bom/bin/cyclonedx-bom -o bom.xml"
+  },
+  "author": "Stephano Apiolaza",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "aigle": "^1.14.1",
+    "app-root-path": "^3.0.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "1.18.2",
+    "composable-middleware": "0.3.0",
+    "connect-multiparty": "2.1.0",
+    "cors": "2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "4.16.2",
+    "express-jwt": "5.3.1",
+    "fast-csv": "2.4.1",
+    "fs": "0.0.1-security",
+    "fs-extra": "^10.0.0",
+    "googleapis": "47.0.0",
+    "handlebars": "^4.7.6",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "moment-natural": "0.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.3.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@cyclonedx/bom": "^2.0.0",
+    "husky": "4.2.3",
+    "nodemon": "1.14.12",
+    "sonar-scanner": "3.1.0",
+    "yarn": "^1.22.4"
+  }
+}
