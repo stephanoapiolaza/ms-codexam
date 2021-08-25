@@ -1,6 +1,6 @@
 "use strict";
 
-const today = require('../helper/date.helper');
+const {today} = require('../helper/date.helper');
 
 /**
  * Allow to upload code to retrieve the output
