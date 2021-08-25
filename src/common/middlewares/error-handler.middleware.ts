@@ -1,5 +1,5 @@
 import * as core from 'express-serve-static-core';
-import logger from '../logger/logger';
+import logger from '../config/logger';
 
 export default (app: core.Express) => {
   const logErrors = (err: any, req: any, res: any, next: any) => {

@@ -1,5 +1,5 @@
 import * as core from 'express-serve-static-core';
-import assessmentRoutes from './api/assesment/assesment.routes';
+import assessmentRoutes from './feature/assesment/assesment.routes';
 
 const routing = (app: core.Express) => {
   // controllers

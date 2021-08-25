@@ -1,197 +1,197 @@
 openapi: '3.0.0'
 info:
-	description: It allows knowing the skills of workers to locate them at specific points
-	version: 1.0.0
-	title: Codexam
-	termsOfService: about:blank
-	contact:
-		name: Stephano Apiolaza
-		url: 'https://stephanoapiolaza.cl'
-		email: stephanoapiolaza@gmail.com
-	license:
-		name: ISC
+  description: It allows knowing the skills of workers to locate them at specific points
+  version: 1.0.0
+  title: Codexam
+  termsOfService: about:blank
+  contact:
+    name: Stephano Apiolaza
+    url: 'https://stephanoapiolaza.cl'
+    email: stephanoapiolaza@gmail.com
+  license:
+    name: ISC
 servers:
-	- url: https://localhost:8080/api/v1
-	  description: Context Url
+  - url: https://localhost:8080/api/v1
+    description: Context Url
 paths:
-	'/assesments':
-		post:
-			tags:
-				- Assesments
-			summary: Allow to upload code to retrieve the output
-			description: Allow to upload code in different language to render or to get standard output
-			operationId: do_reassess
-			security:
-				- BearerAuth: []
-			requestBody:
-				required: true
-				content:
-					application/json:
-						schema:
-							$ref: '#/components/schemas/Assesment'
-			responses:
-				'200':
-					description: Retrieve the resource requested
-					content:
-						application/json:
-							schema:
-								$ref: '#/components/schemas/Checkout'
-				'400':
-					$ref: '#/components/responses/BadRequest'
-				'401':
-					$ref: '#/components/responses/Unauthorized'
-				'403':
-					$ref: '#/components/responses/Forbidden'
-				'404':
-					$ref: '#/components/responses/NotFound'
-				'422':
-					$ref: '#/components/responses/Unprocessable'
-				'500':
-					$ref: '#/components/responses/InternalServer'
-				default:
-					$ref: '#/components/responses/InternalServer'
+  '/assessments':
+    post:
+      tags:
+        - Assessments
+      summary: Allow to upload code to retrieve the output
+      description: Allow to upload code in different language to render or to get standard output
+      operationId: do_reassess
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assessments'
+      responses:
+        '200':
+          description: Retrieve the resource requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalServer'
+        default:
+          $ref: '#/components/responses/InternalServer'
 components:
-	schemas:
-		Checkout:
-			type: object
-			description: Output of the assesment
-			properties:
-				type:
-					description: Kind of output, examples web or back
-					type: string
-					example: 'web'
-				sdtout:
-					type: array
-					items:
-						$ref: '#/components/schemas/Stdout'
-		Stdout:
-			type: object
-			description: Output of the assesment
-			properties:
-				type:
-					description: Kind of standard output, examples test, compiler, iframe, etc
-					type: string
-					example: 'iframe'
-				data:
-					description: Buffer output
-					type: string
-					example: 'terminal ....'
-		Assesment:
-			type: object
-			description: Information about assesment to make by user
-			properties:
-				key:
-					description: This key uniquely identifies the Assesment
-					type: string
-					example: 'UIJ120#2012'
-				tasks:
-					type: array
-					items:
-						$ref: '#/components/schemas/Task'
-		Task:
-			type: object
-			description: Information about task to make by user
-			properties:
-				key:
-					description: This key uniquely identifies the Assesment
-					type: string
-					example: 'UIJ120#2012'
-				summary:
-					description: Information about the task to complete
-					type: string
-					example: 'Se debe realizar lo siguiente <p>Ejemplo</p>'
-				type:
-					description: Kind of tasks completed, exist multiple values like code or multipleChoice
-					type: string
-					example: 'code'
-				answers:
-					type: array
-					items:
-						$ref: '#/components/schemas/Answer'
-		Answer:
-			type: object
-			description: Information about answer to make by user
-			properties:
-				data:
-					description: Answer to make by user
-					type: string
-					example: 'import {useEffect} from "react" ...'
-		Notification:
-			type: object
-			properties:
-				message:
-					type: string
-					example: Something is invalid
-					description: >-
-						Description of the error or information notification. Where the
-						response is 2xx, it's a notification with informational details about
-						this response.
+  schemas:
+    Checkout:
+      type: object
+      description: Output of the assesment
+      properties:
+        type:
+          description: Kind of output, examples web or back
+          type: string
+          example: 'web'
+        sdtout:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stdout'
+    Stdout:
+      type: object
+      description: Output of the assesment
+      properties:
+        type:
+          description: Kind of standard output, examples test, compiler, iframe, etc
+          type: string
+          example: 'iframe'
+        data:
+          description: Buffer output
+          type: string
+          example: 'terminal ....'
+    Assessments:
+      type: object
+      description: Information about assesment to make by user
+      properties:
+        key:
+          description: This key uniquely identifies the Assesment
+          type: string
+          example: 'UIJ120#2012'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    Task:
+      type: object
+      description: Information about task to make by user
+      properties:
+        key:
+          description: This key uniquely identifies the Assesment
+          type: string
+          example: 'UIJ120#2012'
+        summary:
+          description: Information about the task to complete
+          type: string
+          example: 'Se debe realizar lo siguiente <p>Ejemplo</p>'
+        type:
+          description: Kind of tasks completed, exist multiple values like code or multipleChoice
+          type: string
+          example: 'code'
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Answer'
+    Answer:
+      type: object
+      description: Information about answer to make by user
+      properties:
+        data:
+          description: Answer to make by user
+          type: string
+          example: 'import {useEffect} from "react" ...'
+    Notification:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Something is invalid
+          description: >-
+            Description of the error or information notification. Where the
+            response is 2xx, it's a notification with informational details about
+            this response.
 
-				timestamp:
-					type: string
-					format: date-time
-					example: 2020-05-06T11:38:48.103Z
-					description: 'Notification code. The first character indicates the day and time the request was made.'
-				metadata:
-					type: object
-					additionalProperties:
-						type: object
-					description: Context specific to this area. May not be provided.
-		EmptyData:
-			type: object
-			properties:
-				data:
-					type: string
-					example: null
-				notifications:
-					type: array
-					items:
-						$ref: '#/components/schemas/Notification'
-	securitySchemes:
-		BearerAuth:
-			type: http
-			scheme: bearer
-			bearerFormat: JWT
-	responses:
-		BadRequest:
-			description: Indicates that the server could not understand the request
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		Unauthorized:
-			description: This will be returned when no authentication information is provided
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		Forbidden:
-			description: The principal associated with the request does not have sufficient rights to perform this operation on the requested resource
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		NotFound:
-			description: The specified resource was not found
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		Conflict:
-			description: The specified resource had a problem
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		Unprocessable:
-			description: The request was syntactically correct but was not semantically correct. Usually indicating a validation problem
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
-		InternalServer:
-			description: Internal Server Error
-			content:
-				application/json:
-					schema:
-						$ref: '#/components/schemas/EmptyData'
+        timestamp:
+          type: string
+          format: date-time
+          example: 2020-05-06T11:38:48.103Z
+          description: 'Notification code. The first character indicates the day and time the request was made.'
+        metadata:
+          type: object
+          additionalProperties:
+            type: object
+          description: Context specific to this area. May not be provided.
+    EmptyData:
+      type: object
+      properties:
+        data:
+          type: string
+          example: null
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    BadRequest:
+      description: Indicates that the server could not understand the request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    Unauthorized:
+      description: This will be returned when no authentication information is provided
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    Forbidden:
+      description: The principal associated with the request does not have sufficient rights to perform this operation on the requested resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    Conflict:
+      description: The specified resource had a problem
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    Unprocessable:
+      description: The request was syntactically correct but was not semantically correct. Usually indicating a validation problem
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'
+    InternalServer:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/EmptyData'

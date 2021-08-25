@@ -1,9 +1,9 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import winston from './config/winston';
+import winston from '../../common/config/winston';
 import routes from './routes';
-import errorHandler from './middlewares/error-handler.middleware';
+import errorHandler from '../../common/middlewares/error-handler.middleware';
 
 const app = express();
 const limit = '50mb';

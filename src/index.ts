@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
-import app from './app';
-import winston from './config/winston';
+import 'reflect-metadata';
+import app from './interfaces/api/app';
+import winston from './common/config/winston';
 
 const environmentVariables = dotenv.config();
 
