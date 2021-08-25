@@ -1,7 +1,6 @@
 'use strict'
 
 const express = require('express')
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const winston = require('./config/winston');
 const cors = require('cors');

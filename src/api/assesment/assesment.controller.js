@@ -15,7 +15,7 @@ exports.doReassess = async (req, res) => {
         "sdtout": [
           {
             "type": "iframe",
-            "data": "terminal ...."
+            "data": "https://stephanoapiolaza.cl"
           }
         ]
       });
