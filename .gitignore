@@ -62,3 +62,7 @@ lint-report*
 /yarn.lock
 
 /logs
+
+# this project
+app.log
+*.log

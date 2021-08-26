@@ -1,5 +1,5 @@
 import {
-  ValidateNested, IsNotEmpty, IsDefined, Min,
+  ValidateNested, IsNotEmpty, IsDefined, ArrayNotEmpty,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -12,6 +12,6 @@ export default class Assessment {
 
   @ValidateNested()
   @Type(() => Task)
-  @Min(1)
+  @ArrayNotEmpty()
   tasks: Task[];
 }
