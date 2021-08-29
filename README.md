@@ -12,6 +12,13 @@ Below you will find some information on how to perform common tasks.
 
 Want to run a pipeline, you need to read this [SETUP.md](./documentation/SETUP.md).
 
+## Run Container
+
+To deploy container just write on terminal
+```
+docker-compose up && docker-compose rm -fsv
+```
+
 ## Changelog
 
 Every change is registered in this files [Changelog.md](CHANGELOG.md).
