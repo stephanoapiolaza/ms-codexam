@@ -1,5 +1,5 @@
-const enum StdoutType {
-  iframe,
+enum StdoutType {
+  IFRAME = 'IFRAME',
 }
 
 export default StdoutType;

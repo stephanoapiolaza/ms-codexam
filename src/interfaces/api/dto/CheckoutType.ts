@@ -1,5 +1,5 @@
-const enum CheckoutType {
-  web,
+enum CheckoutType {
+  WEB = 'WEB',
 }
 
 export default CheckoutType;
