@@ -8,7 +8,7 @@ import Task from './Task';
 export default class Assessment {
   @IsDefined()
   @IsNotEmpty({ message: 'Assesment key can not be empty' })
-  key: String;
+  key: string;
 
   @ValidateNested()
   @Type(() => Task)

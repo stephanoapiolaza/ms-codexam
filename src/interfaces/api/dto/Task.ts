@@ -5,11 +5,11 @@ import { Type } from 'class-transformer';
 import Answer from './Answer';
 
 export default class Task {
-  key: String;
+  key: string;
 
-  summary: String;
+  summary: string;
 
-  type: String;
+  type: string;
 
   @Type(() => Answer)
   @ValidateNested()
