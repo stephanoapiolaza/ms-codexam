@@ -14,13 +14,85 @@ servers:
   - url: https://localhost:8080/api/v1
     description: Context Url
 paths:
-  '/assessments':
+  '/assessments/start':
+    post:
+      tags:
+        - Assessments
+      summary: Allow to start test to retrieve the tasks to complete
+      description: Allow to know the tasks to complete, time to finish and theirs description
+      operationId: start_test
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assessments'
+      responses:
+        '200':
+          description: Retrieve the resource requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assessments'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalServer'
+        default:
+          $ref: '#/components/responses/InternalServer'
+  '/assessments/verify':
     post:
       tags:
         - Assessments
       summary: Allow to upload code to retrieve the output
       description: Allow to upload code in different language to render or to get standard output
       operationId: do_reassess
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assessments'
+      responses:
+        '200':
+          description: Retrieve the resource requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '500':
+          $ref: '#/components/responses/InternalServer'
+        default:
+          $ref: '#/components/responses/InternalServer'
+  '/assessments/submit':
+    post:
+      tags:
+        - Assessments
+      summary: Allow to upload code to complete the test
+      description: Allow to retrieve the user score
+      operationId: submit_test
       security:
         - BearerAuth: []
       requestBody:
@@ -84,6 +156,10 @@ components:
           description: This key uniquely identifies the Assesment
           type: string
           example: 'UIJ120#2012'
+        duration:
+          description: Allow to know how much time hr:min the user has to complete the test
+          type: string
+          example: '1h 40 min'
         tasks:
           type: array
           items:
@@ -96,7 +172,11 @@ components:
           description: This key uniquely identifies the Assesment
           type: string
           example: 'UIJ120#2012'
-        summary:
+        name:
+          description: Name of the task
+          type: string
+          example: 'Custom Component on React'
+        description:
           description: Information about the task to complete
           type: string
           example: 'Se debe realizar lo siguiente <p>Ejemplo</p>'

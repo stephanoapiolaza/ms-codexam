@@ -7,12 +7,21 @@ import Answer from './Answer';
 export default class Task {
   key: string;
 
-  summary: string;
+  name: string;
+
+  description: string;
 
   type: string;
 
   @Type(() => Answer)
-  @ValidateNested()
-  @ArrayNotEmpty()
+  @ValidateNested({ groups: ['verify', 'submit'] })
+  @ArrayNotEmpty({ groups: ['verify', 'submit'] })
   answers: Answer[];
+
+  constructor(key: string, name: string, description: string, type: string) {
+    this.key = key;
+    this.name = name;
+    this.description = description;
+    this.type = type;
+  }
 }

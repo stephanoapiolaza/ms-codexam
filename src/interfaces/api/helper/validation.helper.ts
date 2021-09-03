@@ -33,9 +33,9 @@ const notificationError = (error: any) => {
   });
 };
 
-const validationHelper = (dtoClass: any) => (req: Request, res: Response, next: NextFunction) => {
+const validationHelper = (dtoClass: any, groups: string[] = ['']) => (req: Request, res: Response, next: NextFunction) => {
   const output: any = plainToClass(dtoClass, req.body);
-  const optionValidate = { validationError: { target: false } };
+  const optionValidate = { validationError: { target: false }, groups };
   validate(output, optionValidate).then((errors) => {
     if (errors.length > 0) {
       const constraints = flatten(errors.map((element) => getConstraints(element)))

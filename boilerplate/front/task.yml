@@ -1,0 +1,38 @@
+# Define structure of every task
+key: TSK_001
+name: Custom Component on React
+duration:
+  min: 30
+tags:
+  - react
+  - javascript
+  - html
+description: >-
+  Your application is using React Context to share the state across multiple components. Your task is to implement a PhotosList component that renders a photos list and also adjusts it's colors to a given theme. There are two contexts available - PhotosContext, ThemeContext - and they are the source of the data.
+  <br/>
+  Application uses React 16.8.6.
+  <br/>
+  Contexts
+  PhotosContext shares the following state: {photos, fetchPhotos}.
+  <br/>
+  The photos is the list of the photos and each photo has the shape of {title, imgSrc}. Both title and imgSrc are strings. The fetchPhotos is a method that tells the context component to fetch more photos. It returns a promise after a succesfull call, but doesn't resolve with any data - new photos list is handled by the context component and later available through photos variable.
+  <br/>
+  ThemeContext shares the following state: {theme}. theme is a string and can take two values: light or dark. Default value is light.
+  <br/>
+  Both context modules contain following properties: Context and Consumer. Providers for two contexts are already rendered behind the scenes and you don't need to take care of them. Depending on the component type you choose (class vs functional) use them for example like this: PhotosContext.Context or ThemeContext.Consumer.
+  <br/>
+  <strong>Requirements</strong>
+  PhotosList component:
+  <br/>
+  should be a div with a photos-list-container id,
+  should render an unordered list (<ul />) of the photos (<li />),
+  list element ul should have a photos-list id,
+  photos-list-container should have white background (background CSS property) for light theme and black background for dark theme.
+  An each photo (<li>):
+  <br/>
+  should have a title (<h3>),
+  the title text color should be black for light theme and white for dark theme,
+  should have an img (<img />) with the image source from imgSrc field of the photo.
+  Additionally, below the PhotosList, you should place a button (<button />) that will call the fetchPhotos method (from the context). The button should have a fetch-photos id.
+  <br/>
+  For the reference, you can use the following image:
